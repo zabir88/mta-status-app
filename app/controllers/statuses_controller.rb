@@ -15,7 +15,7 @@ class StatusesController < ApplicationController
 		data.css("#{@service_types}/line").each do |categories|
 			@line_name<<categories.at_css('name').text
 			@status<<categories.at_css('status').text
-			@text<<categories.at_css('text').text.gsub(/<\/?[^>]*>/, '').gsub(/\n\n+/, "\n").gsub(/^\n|\n$/, '')
+			@text<<categories.at_css('text').text.gsub(/<\/?[^>]*>/, '').gsub(/\n\n+/, "\n").gsub(/^\n|\n$/, '').gsub("&nbsp;", '').gsub( '&#149', '')
 		end
 		
 	end
