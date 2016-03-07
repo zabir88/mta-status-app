@@ -1,0 +1,39 @@
+<br><br><br>
+<div class='container'>
+  
+  <h1 class='text-center'><b>Check MTA service status with one click!</b></h1><br>
+  
+  <div class= 'well'>
+    <%= form_tag('/statuses/index', method:'post')  do %>
+		  <h3>Service Types</h3><br>
+      <p>
+        <%= radio_button_tag('service_types' , "subway") %> Subway &nbsp; &nbsp; &nbsp;
+  		  <%= radio_button_tag('service_types', "bus") %> Bus &nbsp; &nbsp; &nbsp;
+  		  <%= radio_button_tag('service_types' , "bt") %> BT &nbsp; &nbsp; &nbsp;
+        <%= radio_button_tag('service_types' , "lirr") %> LIRR &nbsp; &nbsp; &nbsp;
+        <%= radio_button_tag('service_types' , "metronorth") %> Metro North &nbsp; &nbsp; &nbsp; <%= submit_tag 'Check Status', class: 'btn btn-primary'  %>  
+      </p>
+    <% end %>	
+  </div><br>
+
+  <h4><span class='lead'><b><%= @service_types_capital%></b></span>&nbsp; Last Status Updated At: &nbsp; <%= @timestamp %> </h4>
+  
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <th>Line Name</th>
+        <th>Status</th>
+        <th>Text</th>
+      </thead>
+      <tbody>
+        <% @line_name.zip(@status, @text).each do |name, status, text| %>
+          <tr>  
+            <td><%= name %></td>
+            <td><%= status %></td>
+            <td><%= text %></td>
+          </tr>
+        <% end %>  
+      </tbody>
+    </table>
+  </div>
+</div>
