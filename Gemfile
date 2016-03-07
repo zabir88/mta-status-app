@@ -19,6 +19,7 @@ gem 'nokogiri', '~> 1.6', '>= 1.6.7.2'
 
 group :development, :test do
   gem 'byebug'
+  gem 'sqlite3'
 end
 
 group :development do
