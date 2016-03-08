@@ -23,14 +23,12 @@
       <thead>
         <th>Line Name</th>
         <th>Status</th>
-        <th>Text</th>
       </thead>
       <tbody>
         <% @line_name.zip(@status, @text).each do |name, status, text| %>
           <tr>  
             <td><%= name %></td>
-            <td><%= status %></td>
-            <td><%= text %></td>
+            <td><%= status %> <br><br> <%= text %></td>
           </tr>
         <% end %>  
       </tbody>
