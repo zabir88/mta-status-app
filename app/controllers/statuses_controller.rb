@@ -8,10 +8,8 @@ class StatusesController < ApplicationController
 		@service_types_capital= params[:service_types].to_s.upcase
 		@line_name, @status, @text, @timestamp= [], [], [], ''
 	
-		data.css("service/timestamp").each do |time|
-			@timestamp<<time
-		end 		
-		
+		@timestamp<< data.at_css("service/timestamp")
+			
 		data.css("#{@service_types}/line").each do |categories|
 			@line_name<<categories.at_css('name').text
 			@status<<categories.at_css('status').text
